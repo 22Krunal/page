@@ -1,0 +1,474 @@
+
+<!-- saved from url=(0069)https://ecampus.daiict.ac.in/webapp/intranet/StudentDetailEditServlet -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"> 
+<title>Dhirubhai Ambani - Institute of Information and Communication Technology</title>
+
+<link rel="stylesheet" type="text/css" href="./Dhirubhai Ambani - Institute of Information and Communication Technology_files/StyleEDU.css">
+<script>
+function fncAddressEdit(prmStdId,prmAdrId)
+{
+	//alert("StdId :"+prmStdId+"--AdrId :"+prmAdrId);
+	document.frmStudentDetailEdit.AddressID.value=prmAdrId;
+	document.frmStudentDetailEdit.action="AddressEditServlet";
+	document.frmStudentDetailEdit.submit();
+}
+
+function fncICard()
+{
+	document.frmStudentDetailEdit.action="StudentICardApplicationForm";
+	document.frmStudentDetailEdit.submit();
+}
+
+function fncValidate()
+{
+	var lvalidator = eval(document.validator);
+	errMsg = "";
+	lform = document.frmStudentDetailEdit;
+	var lDateofBirth=lform.STDDOB.value;
+	lvalidator.validateDate(lDateofBirth,"N","dd-MMM-yyyy","");
+	if (lvalidator.getErrorFlag()=="1") errMsg = errMsg + "\nDate of Birth : " + lvalidator.getMessage();
+
+	lvalidator.validateString(lform.STDGENDER.value,"N",1,"Y");
+	if (lvalidator.getErrorFlag()=="1") errMsg = errMsg + "\nGender : " + lvalidator.getMessage();
+	
+	lvalidator.validateNumber(lform.STDPLUSTWO.value,"N","0.00","DOUBLE","100.00","0","");
+	if (lvalidator.getErrorFlag()=="1") errMsg = errMsg + "\nPlus Two : " + lvalidator.getMessage();
+
+	//lvalidator.validateString(lform.STDFIELD2.value,"N",62,"Y");
+	//if (lvalidator.getErrorFlag()=="1") errMsg = errMsg + "\nName Of the School : " + lvalidator.getMessage();
+
+	lvalidator.validateString(lform.STDPLUSTWOBOARD.value,"N",62,"Y");
+	if (lvalidator.getErrorFlag()=="1") errMsg = errMsg + "\nPlus Two Board : " + lvalidator.getMessage();
+	
+	lvalidator.validateString(lform.STDPLUSTWOYEAR.value,"N",4,"Y");
+	if (lvalidator.getErrorFlag()=="1") errMsg = errMsg + "\nPlus Two Year : " + lvalidator.getMessage();
+	
+	lvalidator.validateNumber(lform.STDHEIGHT.value,"N","0.00","DOUBLE","10000.00","0","");
+	if (lvalidator.getErrorFlag()=="1") errMsg = errMsg + "\nHeight : " + lvalidator.getMessage();
+
+	lvalidator.validateString(lform.STDIDMARK.value,"N",62,"Y");
+	if (lvalidator.getErrorFlag()=="1") errMsg = errMsg + "\nIdentification Mark : " + lvalidator.getMessage();
+	
+	lvalidator.validateString(lform.STDBLDGRP.value,"N",10,"Y");
+	if (lvalidator.getErrorFlag()=="1") errMsg = errMsg + "\nBlood Group : " + lvalidator.getMessage();
+	
+	
+	if (errMsg.length>0)
+		alert(errMsg);
+	else
+	{
+		//lform.from.value="StudentDetailEditServlet";
+		lform.btnSave.disabled = true;
+		lform.submit();
+	}
+}
+
+function IsValidNumber(txtNumber)
+{
+	var Num = /^\d+(\.\d+)?$/;
+	
+	if (!Num.test(txtNumber) == true)
+		return true;
+	else
+		return false;
+}
+
+function IsYearNumber(txtYear)
+{
+	var year = /^[1-9]{1}[0-9]{3}$/;
+	
+	if (!year.test(txtYear) == true)
+		return true;
+	else
+		return false;
+}
+
+function fncValidateStudent()
+{
+	errMsg = "";
+	lform = document.frmStudentDetailEdit;
+
+	if (IsValidNumber(lform.STDPLUSTWO.value)) 
+		errMsg = errMsg + "\n Enter Valid Qualifying Percentage / CPI Details";
+
+	if (lform.STDPLUSTWOBOARD.value.length==0)
+		errMsg = errMsg + "\n Enter Valid Qualifying Board Details";
+
+	if (IsYearNumber(lform.STDPLUSTWOYEAR.value)) 
+		errMsg = errMsg + "\n Enter Valid Qualifying Year Details";
+
+	if (IsValidNumber(lform.STDHEIGHT.value)) 
+		errMsg = errMsg + "\n Enter Valid Height Details";
+	
+	if (lform.STDIDMARK.value.length==0)
+		errMsg = errMsg + "\n Enter Valid Identification Mark Details";
+	
+	if (lform.STDBLDGRP.value.length==0)
+		errMsg = errMsg + "\n Enter Valid Blood Group Details";
+	
+	if (errMsg.length>0)
+		alert(errMsg);
+	else
+	{
+		//lform.from.value="StudentDetailEditServlet";
+		lform.btnSave.disabled = true;
+		lform.submit();
+	}
+}
+</script>
+
+</head>
+<body bgcolor="">
+
+
+
+
+<script type="text/javascript">
+	var NoOffFirstLineMenus=10;
+	var LowBgColor='#69a2dd';
+	var LowSubBgColor='#FFFEF6';
+	var HighBgColor='#FFFEF6';
+	var HighSubBgColor='#69a2dd';
+	var FontLowColor='white';
+	var FontSubLowColor='#205AA7';
+	var FontHighColor='#205AA7';
+	var FontSubHighColor='white';
+	var BorderColor='black';
+	var BorderSubColor='black';
+	var BorderWidth=1;
+	var BorderBtwnElmnts=1;
+	var FontFamily="Arial, Helvetica";
+	var FontSize=8;
+	var FontBold=1;
+	var FontItalic=0;
+	var MenuTextCentered='left';
+	var MenuCentered='left';
+	var MenuVerticalCentered='top';
+	var ChildOverlap=.2;
+	var ChildVerticalOverlap=.2;
+	var StartTop=32;
+	var StartLeft=0;
+	var VerCorrect=0;
+	var HorCorrect=0;
+	var LeftPaddng=5;
+	var TopPaddng=3;
+	var FirstLineHorizontal=1;
+	var MenuFramesVertical=1;
+	var DissapearDelay=1000;
+	var TakeOverBgColor=1;
+	var FirstLineFrame='navig';
+	var SecLineFrame='space';
+	var DocTargetFrame='space';
+	var TargetLoc='';
+	var HideTop=0;
+	var MenuWrap=1;
+	var RightToLeft=0;
+	var UnfoldsOnClick=0;
+	var WebMasterCheck=0;
+
+function BeforeStart(){return}
+function AfterBuild(){return}
+function BeforeFirstOpen(){return}
+function AfterCloseAll(){return}
+
+
+Menu1=new Array("Home","/webapp/intranet/edu/student/DefaultStudentHomePage.jsp","",0,18,50);
+Menu2=new Array("Student Detail","","",2,18,100);
+     Menu2_1=new Array("Student Profile","/webapp/intranet/StudentDetailEditServlet","",0,18,100);
+     Menu2_2=new Array("InternShipDetails","","",0,18,100);
+//Menu4=new Array("Registration","","",0,18,80);
+Menu3=new Array("Registration","/webapp/intranet/StudentRegistrationListServlet","",0,18,80);
+Menu4=new Array("Course Adjustements","","",2,18,130);
+	Menu4_1=new Array("Add-Drop Course","/webapp/intranet/CourseAddDropListServlet","",0,18,130);
+	Menu4_2=new Array("Drop Course","/webapp/intranet/CourseDropListServlet","",0,18,130);
+Menu5=new Array("Result","/webapp/intranet/GradeSemesterListServlet","",0,18,50);
+//Menu7=new Array("Attendence","","",0,18,80);
+Menu6=new Array("Hostel","","",6,18,80);  
+	//Menu7_1=new Array("Leaves Request","/webapp/intranet/HostelStudentLeavesListServlet","",0,20,96);
+	//Menu7_2=new Array("Parent Room Request","","",0,20,96);
+	//Menu7_3=new Array("Account","","",0,20,96);
+	Menu6_1=new Array("Bulletin Board","/webapp/intranet/BulletinListDisplayServlet","",0,20,125);
+	Menu6_2=new Array("Complain","/webapp/intranet/StudentComplainListServlet","",0,20,125);
+	//Menu6_3=new Array("Suggestion Box","/webapp/intranet/SuggestionNewServlet","",0,20,125);
+	Menu6_3=new Array("Suggestion Box","","",0,20,125);
+	Menu6_4=new Array("Absence Intimation","/webapp/intranet/HostelStudentLeavesListServlet","",0,20,125);
+	Menu6_5=new Array("Visitor Room Booking","/webapp/intranet/HostelVisitRoomBookingsListServlet","",0,20,125);
+      	Menu6_6=new Array("Rules/Regulations","/webapp/intranet/HostelPolicyListDisplayServlet","",0,20,125);
+Menu7=new Array("Fees","","",2,18,80);
+	Menu7_1=new Array("Fee Receipts","","",2,18,120);
+		Menu7_1_1=new Array("As A Candidate","/webapp/intranet/CandidateReceiptsViewServlet","",0,18,120);
+		Menu7_1_2=new Array("As A Student","/webapp/intranet/SemSelector?target=StudentReceiptsViewServlet&actiontext=List Semesters","",0,18,120);
+	Menu7_2=new Array("Dues","","",0,18,120);
+	
+Menu8=new Array("Attendance","","",2,18,100);
+	Menu8_1=new Array("My Attendance","/webapp/intranet/AttandanceSemesterListServlet","",0,18,120);
+	Menu8_2=new Array("Add Attendance","/webapp/intranet/TACourseAttandanceRightListServlet","",0,18,120);
+Menu9=new Array("Utilities","","",1,18,80);
+	Menu9_1=new Array("Change Password","/webapp/intranet/edu/ChangePassword.jsp","",0,18,120);
+
+Menu10=new Array("LOGOUT","/webapp/intranet/LoginServlet?logout=true","",0,18,50);
+
+
+
+
+</script>
+<script type="text/javascript" src="./Dhirubhai Ambani - Institute of Information and Communication Technology_files/menu_com.js.download"></script>
+  <table width="700" border="0" cellspacing="0" cellpadding="0">
+    <tbody><tr> 
+      <td width="700" align="left" valign="bottom"> 
+        <table width="700" border="0" cellspacing="0" cellpadding="0">
+          <tbody><tr> 
+            <td width="138" align="left" valign="center" bgcolor="#FFFFFF">
+<img src="./Dhirubhai Ambani - Institute of Information and Communication Technology_files/daiictlogo.gif" width="130" height="30" border="0" vspace="1">
+</td>
+            <td width="544" align="left" valign="center"><font size="2"><font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><font color="007ABE">Dhirubhai 
+              Ambani<br>
+              Institute of Information &amp; Communication Technology</font></b></font></font><font size="1" color="007ABE"><b> 
+              </b></font><font size="1"><b></b></font></td>
+            <td width="98" align="left" valign="bottom">&nbsp;</td>
+          </tr>
+        </tbody></table>
+      </td>
+    </tr>
+    <tr valign="top"> 
+      <td align="left">&nbsp; </td>
+    </tr>
+    <tr valign="top"> 
+      <td align="left" valign="top"> 
+        <div align="right">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tbody><tr> 
+              <td width="11%">&nbsp;</td>
+              <td width="89%" align="left" valign="top"> 
+                <div align="left">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody><tr> 
+                      <td width="24%"> 
+                        <div align="right"><b><font color="205AA7" size="2"> Student Details Edit </font></b></div>
+                      </td>
+                      <td width="66%"><font class="breadcrumb" face="Verdana, Arial, Helvetica, sans-serif" size="1"><img src="./Dhirubhai Ambani - Institute of Information and Communication Technology_files/header_bg.gif" width="483" height="47" border="0" align="right" hspace="4"></font></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2" align="left" valign="top"> 
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tbody><tr> 
+                            <td align="left" valign="top" bgcolor="#000000"><img src="./Dhirubhai Ambani - Institute of Information and Communication Technology_files/blackspacer.gif" width="1" height="1"></td>
+                          </tr>
+                        </tbody></table>
+                      </td>
+                    </tr>
+                  </tbody></table>
+                </div>
+              </td>
+            </tr>
+          </tbody></table>
+      </div></td> 
+    </tr> 
+  </tbody></table>
+<div style="visibility:hidden;position:absolute">
+<applet id="validator" name="validator" code="Validator.class" codebase="/webapp/intranet/scripts/" width="0" height="0">
+</applet>
+</div>
+
+
+
+
+
+<form method="POST" name="frmStudentDetailEdit" action="https://ecampus.daiict.ac.in/webapp/intranet/StudentDetailEditSaveServlet">
+<table border="0" cellspacing="1" cellpadding="1" width="95%" class="listtbl">
+<tbody><tr>
+	<td class="formlbl">Student Name</td>
+	
+	<td class="listfld" colspan="3">
+		PATEL Deep Bhikhubhai  
+	<input type="hidden" name="STDFIRSTNAME" value="PATEL KRUNAL SHASHIKANTBHAI">
+	<input type="hidden" name="STDMIDDLENAME" value="">
+	<input type="hidden" name="STDLASTNAME" value="">
+	</td>
+	
+</tr>
+<tr>
+	<td class="formlbl">Student Id</td>
+	<td class="listfld" colspan="3">
+		<b>202001442</b>
+	</td>
+	<input type="hidden" name="STDINSTID" value="202001442">
+	<input type="hidden" name="StdInstId" value="202001442">
+</tr>
+<tr>
+	<td class="formlbl">Date Of Birth</td>
+	<td class="listfld" colspan="3">
+
+
+
+	<input class="txtbox" name="STDDOB" value="22-Feb-2002" readonly="">&nbsp;&nbsp;  (dd-MMM-yyyy)&nbsp;&nbsp;(As per 10th Certificate)
+
+
+	</td>
+	<!--<input type="hidden" name="STDDOB" value="22-Feb-2002">-->
+</tr>
+<tr>
+	<td class="formlbl">Gender</td>
+	<td class="listfld">
+
+
+	<input class="txtbox" name="STDGENDER" value="M" readonly="">  (M/F)
+
+
+	</td>
+	<!--<input type="hidden" name="STDGENDER" value="M">-->
+	<td class="listfld" colspan="2" rowspan="7">
+		<img src="./Dhirubhai Ambani - Institute of Information and Communication Technology_files/202001442.jpg" width="150" height="150" onerror="this.src=&#39;/webapp/intranet/StudentPhotos/Nophoto.jpg&#39;">
+	</td>
+</tr>
+<tr>
+	<td class="formlbl">Qualifying Percentage / CPI</td>
+	<td class="formfld">
+		<input class="txtbox" name="STDPLUSTWO" value="86.92" maxlength="5"> <b>%</b>
+	</td>
+</tr>
+<!--tr>
+	<td class="formlbl">Name Of School</td>
+	<td class="formfld">
+		<input class="txtbox" name="STDFIELD2" value="">
+	</td-->
+
+
+<tr>
+	<td class="formlbl">Qualifying Board</td>
+	<td class="formfld">
+		<input class="txtbox" name="STDPLUSTWOBOARD" value="7" maxlength="80">
+	</td>
+</tr>
+<tr>
+	<td class="formlbl">Qualifying Year</td>
+	<td class="formfld">
+		<input class="txtbox" name="STDPLUSTWOYEAR" value="2020" maxlength="4">
+	</td>
+</tr>
+<tr>
+	<td class="formlbl">Height</td>
+	<td class="formfld">
+		<input class="txtbox" name="STDHEIGHT" value="0.00" maxlength="6"> <b>in cm</b>
+	</td>
+</tr>
+<tr>
+	<td class="formlbl">IdentificationMark</td>
+	<td class="formfld">
+		<input class="txtbox" name="STDIDMARK" value="" maxlength="60">
+	</td>
+</tr>
+<tr>
+	<td class="formlbl">Blood Group</td>
+	<td class="formfld">
+		<input class="txtbox" name="STDBLDGRP" value="" maxlength="10">
+	</td>
+</tr>
+
+<tr>
+	<td class="formfld" colspan="3" align="center"><br>
+	<input type="button" class="btn" name="btnSave" value="Save Personal Details" onclick="fncValidateStudent()"><br><br></td>
+</tr>
+
+<tr>
+	<td class="formlbl">Current Local Address</td>
+	<td class="listfld" colspan="3">
+<textarea name="PermAddrs" cols="60" rows="4" readonly="">9313649046
+PRAMUKH KHUSABU SOCIETY, NANDARKHA
+
+
+BILIMORA
+NAVSARI
+GUJARAT,
+396325
+
+Student Mobile No : 8469801566
+Parent  Mobile No : 7573036309
+Email Id : patelkrunal8469@gmail.com
+</textarea><input type="button" class="btn" name="btnCurrEdit" value="EDIT" onclick="fncAddressEdit(9515,37587)">
+	</td>
+	<input type="hidden" name="STDCURRADRID" value="37587">
+</tr>
+<tr>
+	<td class="formlbl">Parent Communication Address</td>
+	<td class="listfld" colspan="3">
+<textarea name="PermAddrs" cols="60" rows="4" readonly="">9313649046
+PRAMUKH KHUSABU SOCIETY, NANDARKHA
+
+
+BILIMORA
+NAVSARI
+GUJARAT,
+396325
+
+Student Mobile No : 9924021470
+Parent  Mobile No : 7573036309
+Email Id : patelkrunal8469@gmail.com
+</textarea>
+
+
+
+	</td>
+	<input type="hidden" name="STDPRMTADRID" value="37586">
+</tr>
+<tr>
+	<td class="formlbl">Emergency Address</td>
+	<td class="listfld" colspan="3">
+<textarea name="PermAddrs" cols="60" rows="4" readonly="">9313649046
+PRAMUKH KHUSABU SOCIETY, NANDARKHA
+
+
+BILIMORA
+NAVSARI
+GUJARAT,
+396325
+
+Landline No: 9924021470
+Parent  Mobile No : 7573036309
+Email Id : patelkrunal8469@gmail.com
+</textarea><input type="button" class="btn" name="btnEmgrEdit" value="EDIT" onclick="fncAddressEdit(9515,37588)">
+	</td>
+	<input type="hidden" name="STDEMRGADRID" value="37588">
+</tr>
+
+<!--<tr>
+	<td class="formlbl">Upload Photo</td>
+	<td class="formfld">
+		<input class="txtbox" value=>
+	</td>
+</tr>-->
+	<input type="hidden" name="STDPHOTOLOCATION" value="">
+</tbody></table>
+<br>
+
+<input type="button" class="btn" name="btnICard" value="Print Identity Card Application" onclick="fncICard()">
+
+<input type="hidden" name="STDCDTID" value="229,103">
+<input type="hidden" name="STDBCHID" value="122">
+<!--<input type="hidden" name="BatchID" value="122">-->
+<input type="hidden" name="STDSTATUS" value="">
+<input type="hidden" name="STDID" value="9515">
+<input type="hidden" name="stdid" value="9515">
+<input type="hidden" name="STDFIELD1" value="">
+<input type="hidden" name="STDFIELD3" value="">
+<input type="hidden" name="STDROWSTATE" value="2">
+<input type="hidden" name="AddressID">
+<input type="hidden" name="from" value="StudentDetailEditServlet">
+</form>
+
+  <table>
+    <tbody><tr valign="top"> 
+      <td align="left" height="2"><img src="./Dhirubhai Ambani - Institute of Information and Communication Technology_files/bluespacer.gif" width="700" height="1"></td>
+    </tr>
+    <tr valign="top"> 
+      <td align="center" valign="top"> 
+        <div align="center"><br><font size="1">
+          © 2002 DA-IICT, Near Indroda Circle, Ahmedabad-Gandhinagar Highway, Gandhinagar 
+          - 382 009, Gujarat, India.<br>
+          Designed, developed and maintained by <a href="http://www.exchangenext.com/">Internet 
+          ExchangeNext.com Ltd</a>.</font></div>
+      </td>
+    </tr>
+  </tbody></table>
+
+<div style="position: absolute; visibility: visible; background-color: black; width: 811px; height: 20px; font-family: Arial, Helvetica; font-weight: bold; font-style: normal; font-size: 8pt; z-index: 101; top: 32px; left: 0px;"><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: white; background-color: rgb(105, 162, 221); text-align: left; width: 45px; height: 15px; padding-left: 5px; padding-top: 3px; left: 1px; top: 1px;">Home</div><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: white; background-color: rgb(105, 162, 221); text-align: left; width: 95px; height: 15px; padding-left: 5px; padding-top: 3px; left: 52px; top: 1px;">Student Detail<img src="./Dhirubhai Ambani - Institute of Information and Communication Technology_files/tridown.gif" style="position: absolute; width: 10px; height: 5px; top: 11px; left: 88px;"></div><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: white; background-color: rgb(105, 162, 221); text-align: left; width: 75px; height: 15px; padding-left: 5px; padding-top: 3px; left: 153px; top: 1px;">Registration</div><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: white; background-color: rgb(105, 162, 221); text-align: left; width: 125px; height: 15px; padding-left: 5px; padding-top: 3px; left: 234px; top: 1px;">Course Adjustements<img src="./Dhirubhai Ambani - Institute of Information and Communication Technology_files/tridown.gif" style="position: absolute; width: 10px; height: 5px; top: 11px; left: 118px;"></div><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: white; background-color: rgb(105, 162, 221); text-align: left; width: 45px; height: 15px; padding-left: 5px; padding-top: 3px; left: 365px; top: 1px;">Result</div><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: white; background-color: rgb(105, 162, 221); text-align: left; width: 75px; height: 15px; padding-left: 5px; padding-top: 3px; left: 416px; top: 1px;">Hostel<img src="./Dhirubhai Ambani - Institute of Information and Communication Technology_files/tridown.gif" style="position: absolute; width: 10px; height: 5px; top: 11px; left: 68px;"></div><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: white; background-color: rgb(105, 162, 221); text-align: left; width: 75px; height: 15px; padding-left: 5px; padding-top: 3px; left: 497px; top: 1px;">Fees<img src="./Dhirubhai Ambani - Institute of Information and Communication Technology_files/tridown.gif" style="position: absolute; width: 10px; height: 5px; top: 11px; left: 68px;"></div><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: white; background-color: rgb(105, 162, 221); text-align: left; width: 95px; height: 15px; padding-left: 5px; padding-top: 3px; left: 578px; top: 1px;">Attendance<img src="./Dhirubhai Ambani - Institute of Information and Communication Technology_files/tridown.gif" style="position: absolute; width: 10px; height: 5px; top: 11px; left: 88px;"></div><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: white; background-color: rgb(105, 162, 221); text-align: left; width: 75px; height: 15px; padding-left: 5px; padding-top: 3px; left: 679px; top: 1px;">Utilities<img src="./Dhirubhai Ambani - Institute of Information and Communication Technology_files/tridown.gif" style="position: absolute; width: 10px; height: 5px; top: 11px; left: 68px;"></div><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: white; background-color: rgb(105, 162, 221); text-align: left; width: 45px; height: 15px; padding-left: 5px; padding-top: 3px; left: 760px; top: 1px;">LOGOUT</div></div><div style="position: absolute; visibility: hidden; background-color: black; width: 102px; height: 39px; font-family: Arial, Helvetica; font-weight: bold; font-style: normal; font-size: 8pt; z-index: 102; top: 0px; left: 0px;"><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: rgb(32, 90, 167); background-color: rgb(255, 254, 246); text-align: left; width: 95px; height: 15px; padding-left: 5px; padding-top: 3px; left: 1px; top: 1px;">Student Profile</div><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: rgb(32, 90, 167); background-color: rgb(255, 254, 246); text-align: left; width: 95px; height: 15px; padding-left: 5px; padding-top: 3px; left: 1px; top: 20px;">InternShipDetails</div></div><div style="position: absolute; visibility: hidden; background-color: black; width: 132px; height: 39px; font-family: Arial, Helvetica; font-weight: bold; font-style: normal; font-size: 8pt; z-index: 102; top: 0px; left: 0px;"><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: rgb(32, 90, 167); background-color: rgb(255, 254, 246); text-align: left; width: 125px; height: 15px; padding-left: 5px; padding-top: 3px; left: 1px; top: 1px;">Add-Drop Course</div><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: rgb(32, 90, 167); background-color: rgb(255, 254, 246); text-align: left; width: 125px; height: 15px; padding-left: 5px; padding-top: 3px; left: 1px; top: 20px;">Drop Course</div></div><div style="position: absolute; visibility: hidden; background-color: black; width: 127px; height: 127px; font-family: Arial, Helvetica; font-weight: bold; font-style: normal; font-size: 8pt; z-index: 102; top: 0px; left: 0px;"><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: rgb(32, 90, 167); background-color: rgb(255, 254, 246); text-align: left; width: 120px; height: 17px; padding-left: 5px; padding-top: 3px; left: 1px; top: 1px;">Bulletin Board</div><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: rgb(32, 90, 167); background-color: rgb(255, 254, 246); text-align: left; width: 120px; height: 17px; padding-left: 5px; padding-top: 3px; left: 1px; top: 22px;">Complain</div><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: rgb(32, 90, 167); background-color: rgb(255, 254, 246); text-align: left; width: 120px; height: 17px; padding-left: 5px; padding-top: 3px; left: 1px; top: 43px;">Suggestion Box</div><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: rgb(32, 90, 167); background-color: rgb(255, 254, 246); text-align: left; width: 120px; height: 17px; padding-left: 5px; padding-top: 3px; left: 1px; top: 64px;">Absence Intimation</div><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: rgb(32, 90, 167); background-color: rgb(255, 254, 246); text-align: left; width: 120px; height: 17px; padding-left: 5px; padding-top: 3px; left: 1px; top: 85px;">Visitor Room Booking</div><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: rgb(32, 90, 167); background-color: rgb(255, 254, 246); text-align: left; width: 120px; height: 17px; padding-left: 5px; padding-top: 3px; left: 1px; top: 106px;">Rules/Regulations</div></div><div style="position: absolute; visibility: hidden; background-color: black; width: 122px; height: 39px; font-family: Arial, Helvetica; font-weight: bold; font-style: normal; font-size: 8pt; z-index: 102; top: 0px; left: 0px;"><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: rgb(32, 90, 167); background-color: rgb(255, 254, 246); text-align: left; width: 115px; height: 15px; padding-left: 5px; padding-top: 3px; left: 1px; top: 1px;">Fee Receipts<img src="./Dhirubhai Ambani - Institute of Information and Communication Technology_files/tri.gif" style="position: absolute; width: 5px; height: 10px; top: 4px; left: 113px;"></div><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: rgb(32, 90, 167); background-color: rgb(255, 254, 246); text-align: left; width: 115px; height: 15px; padding-left: 5px; padding-top: 3px; left: 1px; top: 20px;">Dues</div></div><div style="position: absolute; visibility: hidden; background-color: black; width: 122px; height: 39px; font-family: Arial, Helvetica; font-weight: bold; font-style: normal; font-size: 8pt; z-index: 103; top: 0px; left: 0px;"><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: rgb(32, 90, 167); background-color: rgb(255, 254, 246); text-align: left; width: 115px; height: 15px; padding-left: 5px; padding-top: 3px; left: 1px; top: 1px;">As A Candidate</div><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: rgb(32, 90, 167); background-color: rgb(255, 254, 246); text-align: left; width: 115px; height: 15px; padding-left: 5px; padding-top: 3px; left: 1px; top: 20px;">As A Student</div></div><div style="position: absolute; visibility: hidden; background-color: black; width: 122px; height: 39px; font-family: Arial, Helvetica; font-weight: bold; font-style: normal; font-size: 8pt; z-index: 102; top: 0px; left: 0px;"><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: rgb(32, 90, 167); background-color: rgb(255, 254, 246); text-align: left; width: 115px; height: 15px; padding-left: 5px; padding-top: 3px; left: 1px; top: 1px;">My Attendance</div><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: rgb(32, 90, 167); background-color: rgb(255, 254, 246); text-align: left; width: 115px; height: 15px; padding-left: 5px; padding-top: 3px; left: 1px; top: 20px;">Add Attendance</div></div><div style="position: absolute; visibility: hidden; background-color: black; width: 122px; height: 20px; font-family: Arial, Helvetica; font-weight: bold; font-style: normal; font-size: 8pt; z-index: 102; top: 0px; left: 0px;"><div style="position: absolute; visibility: inherit; overflow: hidden; cursor: default; color: rgb(32, 90, 167); background-color: rgb(255, 254, 246); text-align: left; width: 115px; height: 15px; padding-left: 5px; padding-top: 3px; left: 1px; top: 1px;">Change Password</div></div></body></html>
